@@ -4,18 +4,42 @@ import path from 'node:path';
 import cwd from 'node:process';
 
 const genDiff = (filepath1, filepath2) => {
-	console.log(typeof(filepath1));
-	const filepathabs1 = path.resolve(filepath1.toString());
-	const filepathabs2 = path.resolve(filepath2.toString());
-	console.log(filepathabs1);
-	console.log(typeof(filepathabs1));
+	const filepathabs1 = path.resolve(process.cwd(), filepath1);
+	const filepathabs2 = path.resolve(process.cwd(), filepath2);
 
-	const file1 = fs.readFileSync(filepathabs1, 'utf-8');
-	const file2 = fs.readFileSync(filepathabs2, 'utf-8');
-	console.log(`!!!! ${file1}`);
-	console.log(typeof(file1));
+	const file1 = JSON.parse(fs.readFileSync(filepathabs1, 'utf-8'));
+	const file2 = JSON.parse(fs.readFileSync(filepathabs2, 'utf-8'));
 
-	return file1;
+	const file1toArray = Object.keys(file1);
+	const file2toArray = Object.keys(file2);
+	const uniqKeys = _.sortBy(_.union(file1toArray, file2toArray));
+
+	const obj = uniqKeys.reduce((obj, key) => {
+		if (!_.has(file1, key)) {
+			obj[`+ ${key}`] = file2[key];
+		}
+		if (!_.has(file2, key)) {
+			obj[`- ${key}`] = file1[key];			
+		}
+		if (_.has(file1, key) && _.has(file2, key)) {
+			if (file1[key] !== file2[key]) {
+			obj[`- ${key}`] = file1[key];
+			obj[`+ ${key}`] = file2[key];
+		}
+		if (file1[key] === file2[key]) {
+			obj[`  ${key}`] = file1[key];
+		}
+		}
+		return obj;
+	}, {});
+
+		const diff = _.keys(obj).reduce((acc, str) => {
+			const newAcc = acc + `  ${str}: ${obj[str]}\n`;
+			return newAcc;
+		}, '{\n') + '}';
+
+	
+return diff;
 };
 
 export default genDiff;

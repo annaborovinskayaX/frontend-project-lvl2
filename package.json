@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "type": "module",
   "description": "[![Actions Status](https://github.com/annaborovinskayaX/frontend-project-lvl2/workflows/hexlet-check/badge.svg)](https://github.com/annaborovinskayaX/frontend-project-lvl2/actions)",
-  "main": "index.js",
+  "main": "./src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -22,6 +22,7 @@
   "homepage": "https://github.com/annaborovinskayaX/frontend-project-lvl2#readme",
   "dependencies": {
     "commander": "^9.2.0",
+    "index.js": "^0.0.3",
     "lodash": "^4.17.21"
   }
 }
