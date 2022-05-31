@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { Command } from '../node_modules/commander/esm.mjs';
+import { Command } from 'commander/esm.mjs';
 import genDiff from '../src/index.js';
 
 const program = new Command();
@@ -16,5 +16,3 @@ program
   });
 
 program.parse();
-
-
