@@ -24,6 +24,7 @@
     "@jest/globals": "^28.1.0",
     "commander": "^9.2.0",
     "index.js": "^0.0.3",
+    "js-yaml": "^4.1.0",
     "lodash": "^4.17.21"
   },
   "devDependencies": {
