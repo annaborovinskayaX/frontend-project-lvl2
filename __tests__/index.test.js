@@ -13,12 +13,9 @@ const readFile = (filename) => fs.readFileSync(path.resolve(process.cwd(), filen
 
 const expected = readFile(getFixturePath('expected.txt'));
 
-console.log(expected);
-console.log(genDiff(getFixturePath('file1.json'), getFixturePath('file2.json')));
-console.log(genDiff(getFixturePath('file3.yml'), getFixturePath('file4.yml')));
-console.log(typeof(expected));
-console.log(typeof(genDiff(getFixturePath('file1.json'), getFixturePath('file2.json'))));
-console.log(typeof(genDiff(getFixturePath('file3.yml'), getFixturePath('file4.yml'))));
+console.log(`expected \n ${expected}`);
+console.log(`gendiff json \n ${genDiff(getFixturePath('file1.json'), getFixturePath('file2.json'))}`);
+console.log(`gendiff yml \n ${genDiff(getFixturePath('file3.yml'), getFixturePath('file4.yml'))}`);
 
 test('gendiff json', () => {
   expect(genDiff(getFixturePath('file1.json'), getFixturePath('file2.json'))).toEqual(expected);
