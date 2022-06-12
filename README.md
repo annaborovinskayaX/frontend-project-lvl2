@@ -8,3 +8,5 @@
 ![badge](https://github.com/annaborovinskayaX/frontend-project-lvl2/actions/workflows/nodejs.yml/badge.svg)
 
 acsinema step3: https://asciinema.org/a/fVfFQesq5bKc2aCGcQjOkIONl 
+
+step5: https://asciinema.org/a/pyc6Rs6AdmbYF1tGY6tZdmTqI
