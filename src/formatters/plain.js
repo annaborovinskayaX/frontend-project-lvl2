@@ -32,6 +32,8 @@ const plain = (node, acc = []) => {
     case 'updated':
       return `Property '${accJoin}' was updated. From ${stringify(node.value1)} to ${stringify(node.value2)}`;
 
+    default:
+      throw Error('Error');
   }
 };
 export default plain;

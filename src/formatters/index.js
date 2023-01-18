@@ -2,19 +2,19 @@ import stylish from './stylish.js';
 import plain from './plain.js';
 
 const formatter = (tree, format) => {
-	switch (format) {
-		case 'stylish':
-			return stylish(tree);
+  switch (format) {
+    case 'stylish':
+      return stylish(tree);
 
-		case 'plain':
-			      return plain(tree);
+    case 'plain':
+      return plain(tree);
 
-		case 'json':
-			return JSON.stringify(tree, null, ' ');
+    case 'json':
+      return JSON.stringify(tree, null, ' ');
 
-		default:
-			throw new Error(`Error`);
-	}
+    default:
+      throw new Error('Error');
+  }
 };
 
 export default formatter;

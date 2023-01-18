@@ -20,7 +20,7 @@ const ymlFile2 = getFixturePath('file2.yml');
 
 test.each([
   [jsonFile1, jsonFile2, expectStylish],
-  [ymlFile1, ymlFile2, expectStilish],
+  [ymlFile1, ymlFile2, expectStylish],
 ])('gendiff slylish', (file1, file2, expected) => {
   expect(genDiff(file1, file2, 'stylish')).toBe(expected);
 });
