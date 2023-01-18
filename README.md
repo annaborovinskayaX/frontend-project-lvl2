@@ -10,3 +10,7 @@
 acsinema step3: https://asciinema.org/a/fVfFQesq5bKc2aCGcQjOkIONl 
 
 step5: https://asciinema.org/a/pyc6Rs6AdmbYF1tGY6tZdmTqI
+
+step6: https://asciinema.org/a/ApvzCNSk7TD9V4HgBtL4mOLL3
+
+step7: https://asciinema.org/a/VYaBA2hbjFdDyLYnY7iVBFuj3
