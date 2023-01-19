@@ -7,10 +7,27 @@
 
 ![badge](https://github.com/annaborovinskayaX/frontend-project-lvl2/actions/workflows/nodejs.yml/badge.svg)
 
-acsinema step3: https://asciinema.org/a/fVfFQesq5bKc2aCGcQjOkIONl 
+### Description:
+A difference calculator is a CLI program that determines the difference between two data structures. The utility can display the difference in the form of plain text, stylish and json.
+Supporting formats: json, yaml/yml.
 
-step5: https://asciinema.org/a/pyc6Rs6AdmbYF1tGY6tZdmTqI
+### Installation:
+git clone git@github.com:annaborovinskayaX/frontend-project-lvl2
+make install
 
-step6: https://asciinema.org/a/ApvzCNSk7TD9V4HgBtL4mOLL3
+### Usage:
+Usage: gendiff [options] <filepath1> <filepath2>
+Options:
+  -v, --vers           output the current version
+  -f, --format <type>  output format (default: "stylish")
+  -h, --help           display help for command
 
-step7: https://asciinema.org/a/VYaBA2hbjFdDyLYnY7iVBFuj3
+### Examples of usage:
+An example of a diff for nested structures in a stylish format (default format):
+https://asciinema.org/a/UkBXQAlomDhOgCe6JsNCAFXjQ
+
+A diff for nested structures in a plain format:
+https://asciinema.org/a/VYaBA2hbjFdDyLYnY7iVBFuj3
+
+A diff for nested structures in a json format:
+https://asciinema.org/a/Sv9GGQueCjOEpXTIrwNpJ2Ps6
