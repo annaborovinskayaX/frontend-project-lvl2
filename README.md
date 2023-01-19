@@ -17,11 +17,11 @@ Supporting formats: json, yaml/yml.
 	  -h, --help           display help for command
 ***
 ### Examples of usage:
-## An example of a diff for nested structures in a stylish format (default format):
-[](https://asciinema.org/a/UkBXQAlomDhOgCe6JsNCAFXjQ)
+#### An example of a diff for nested structures in a stylish format (default format):
+[1](https://asciinema.org/a/UkBXQAlomDhOgCe6JsNCAFXjQ)
 
-## A diff for nested structures in a plain format:
-[](https://asciinema.org/a/VYaBA2hbjFdDyLYnY7iVBFuj3)
+#### A diff for nested structures in a plain format:
+[2](https://asciinema.org/a/VYaBA2hbjFdDyLYnY7iVBFuj3)
 
-## A diff for nested structures in a json format:
-[](https://asciinema.org/a/Sv9GGQueCjOEpXTIrwNpJ2Ps6)
+#### A diff for nested structures in a json format:
+[3](https://asciinema.org/a/Sv9GGQueCjOEpXTIrwNpJ2Ps6)
