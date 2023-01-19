@@ -18,10 +18,10 @@ Supporting formats: json, yaml/yml.
 ***
 ### Examples of usage:
 #### An example of a diff for nested structures in a stylish format (default format):
-[1](https://asciinema.org/a/UkBXQAlomDhOgCe6JsNCAFXjQ)
+[https://asciinema.org/a/UkBXQAlomDhOgCe6JsNCAFXjQ]
 
 #### A diff for nested structures in a plain format:
-[2](https://asciinema.org/a/VYaBA2hbjFdDyLYnY7iVBFuj3)
+[https://asciinema.org/a/VYaBA2hbjFdDyLYnY7iVBFuj3]
 
 #### A diff for nested structures in a json format:
-[3](https://asciinema.org/a/Sv9GGQueCjOEpXTIrwNpJ2Ps6)
+[https://asciinema.org/a/Sv9GGQueCjOEpXTIrwNpJ2Ps6]
