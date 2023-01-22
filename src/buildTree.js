@@ -1,46 +1,27 @@
 import _ from 'lodash';
 
 const buildTree = (data1, data2) => {
-  const iter = (node1, node2) => {
-    const keys = _.sortBy(_.union(_.keys(node1), _.keys(node2)));
-    const result = keys.map((key) => {
-      if (!_.has(node1, key)) {
+  const unionKeys = _.union(Object.keys(data1), Object.keys(data2));
+  const result = _.sortBy(unionKeys);
+
+  return result
+    .map((node) => {
+      if (!_.has(data1, node)) {
+        return { name: node, type: 'added', value: data2[node] };
+      }
+      if (!_.has(data2, node)) {
+        return { name: node, type: 'removed', value: data1[node] };
+      }
+      if (_.isObject(data1[node]) && _.isObject(data2[node])) {
+        return { name: node, type: 'nested', children: buildTree(data1[node], data2[node]) };
+      }
+      if (!_.isEqual(data1[node], data2[node])) {
         return {
-          name: key,
-          action: 'added',
-          value: node2[key],
+          name: node, type: 'changed', previusValue: data1[node], currentValue: data2[node],
         };
       }
-      if (!_.has(node2, key)) {
-        return {
-          name: key,
-          action: 'removed',
-          value: node1[key],
-        };
-      }
-      if (_.isObject(node1[key]) && _.isObject(node2[key])) {
-        return {
-          name: key,
-          action: 'nested',
-          children: iter(node1[key], node2[key]),
-        };
-      }
-      if (!_.isEqual(node1[key], node2[key])) {
-        return {
-          name: key,
-          action: 'updated',
-          value1: node1[key],
-          value2: node2[key],
-        };
-      }
-      return {
-        name: key,
-        action: 'unchanged',
-        value: node1[key],
-      };
+      return { name: node, type: 'unchanged', value: data1[node] };
     });
-    return result;
-  };
-  return { name: 'tree', action: 'root', children: iter(data1, data2) };
 };
+
 export default buildTree;

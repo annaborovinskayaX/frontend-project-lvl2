@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-const stringify = (value) => {
+const getValue = (value) => {
   if (_.isObject(value) && value !== null) {
     return '[complex value]';
   }
@@ -10,30 +10,33 @@ const stringify = (value) => {
   return value;
 };
 
-const plain = (node, acc = []) => {
-  const accJoin = acc.join('.');
-  switch (node.action) {
-    case 'root':
-      return node.children
-        .filter((child) => child.action !== 'unchanged')
-        .map((child) => plain(child, [...acc, child.name])).join('\n');
+const plain = (data) => {
+  const iter = (currentValue, parent) => {
+    if (!_.isObject(currentValue)) {
+      return `${currentValue}`;
+    }
 
-    case 'nested':
-      return node.children
-        .filter((child) => child.action !== 'unchanged')
-        .map((child) => plain(child, [...acc, child.name])).join('\n');
+    const lines = Object.entries(currentValue).map(([, node]) => {
+      switch (node.type) {
+        case 'nested':
+          return iter(node.children, `${parent}${node.name}.`);
+        case 'added':
+          return `Property '${parent}${node.name}' was added with value: ${getValue(node.value)}`;
+        case 'removed':
+          return `Property '${parent}${node.name}' was removed`;
+        case 'changed':
+          return `Property '${parent}${node.name}' was updated. From ${getValue(node.previusValue)} to ${getValue(node.currentValue)}`;
+        case 'unchanged':
+          return '';
+        default:
+          throw new Error('Error');
+      }
+    });
 
-    case 'added':
-      return `Property '${accJoin}' was added with value: ${stringify(node.value)}`;
+    return _.compact([...lines]).join('\n');
+  };
 
-    case 'removed':
-      return `Property '${accJoin}' was removed`;
-
-    case 'updated':
-      return `Property '${accJoin}' was updated. From ${stringify(node.value1)} to ${stringify(node.value2)}`;
-
-    default:
-      throw Error('Error');
-  }
+  return iter(data, '');
 };
+
 export default plain;
