@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-const diff = (file1, file2) => {
+const buildTree = (data1, data2) => {
   const iter = (node1, node2) => {
     const keys = _.sortBy(_.union(_.keys(node1), _.keys(node2)));
     const result = keys.map((key) => {
@@ -35,12 +35,12 @@ const diff = (file1, file2) => {
       }
       return {
         name: key,
-        action: 'save',
+        action: 'unchanged',
         value: node1[key],
       };
     });
     return result;
   };
-  return { name: 'tree', action: 'root', children: iter(file1, file2) };
+  return { name: 'tree', action: 'root', children: iter(data1, data2) };
 };
-export default diff;
+export default buildTree;

@@ -1,7 +1,7 @@
 import path from 'path';
 import * as fs from 'fs';
-import diff from './diff.js';
-import formatter from './formatters/index.js';
+import buildTree from './buildTree.js';
+import getDataInFormat from './formatters/index.js';
 import parseFile from './parsers.js';
 
 const getData = (filepath) => {
@@ -13,8 +13,8 @@ const getData = (filepath) => {
 const genDiff = (filepath1, filepath2, format = 'stylish') => {
   const data1 = getData(filepath1);
   const data2 = getData(filepath2);
-  const callDiff = diff(data1, data2);
-  return formatter(callDiff, format);
+  const callDiff = buildTree(data1, data2);
+  return getDataInFormat(callDiff, format);
 };
 
 export default genDiff;

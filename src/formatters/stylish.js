@@ -7,7 +7,7 @@ const stringify = (item, strDepth, runStylish) => {
     return item;
   }
   const result = Object.entries(item)
-    .map(([key, value]) => runStylish({ action: 'save', value, name: key }, strDepth)).join('\n');
+    .map(([key, value]) => runStylish({ action: 'unchanged', value, name: key }, strDepth)).join('\n');
   return `{\n${result}\n${indent(strDepth - 1)}  }`;
 };
 
@@ -35,7 +35,7 @@ const stylish = (node, depth = 0) => {
     case 'removed':
       return `${indent(depth)}- ${name}: ${stringify(node.value, depthNew, stylish)}`;
 
-    case 'save':
+    case 'unchanged':
       return `${indent(depth)}  ${name}: ${stringify(node.value, depthNew, stylish)}`;
 
     default:
